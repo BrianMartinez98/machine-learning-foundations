@@ -1,4 +1,3 @@
-import codecademylib3
 import pandas as pd
 import matplotlib.pyplot as plt
 exam_pass = pd.read_csv('exam_pass_data.csv')
