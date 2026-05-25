@@ -13,18 +13,18 @@ model = LogisticRegression()
 model.fit(hours_studied, passed_exam)
 
 # Define five_hour_studier below
-five_hour_studier = model.predict_proba([[5]])[0][1]
+five_hour_studier = model.predict_proba(pd.DataFrame({"hours_studied": [5]}))[0][1]
 print("Probability of passing after studying 5 hours:", five_hour_studier)
 
 # Plug sample data into fitted model
-sample_x = np.linspace(-1, 25, 300).reshape(-1, 1)
+sample_x = pd.DataFrame({"hours_studied": np.linspace(-1, 25, 300)})
 probability = model.predict_proba(sample_x)[:, 1]
 
 # Plot exam data
 plt.scatter(hours_studied, passed_exam, color="black", s=100)
 
 # Plot logistic curve
-plt.plot(sample_x, probability, color="red", linewidth=3)
+plt.plot(sample_x["hours_studied"], probability, color="red", linewidth=3)
 
 # Customization for readability
 plt.xticks(fontsize=20)

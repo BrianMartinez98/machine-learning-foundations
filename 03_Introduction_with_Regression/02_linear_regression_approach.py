@@ -15,7 +15,7 @@ model = LinearRegression()
 model.fit(exam_pass[["hours_studied"]], exam_pass[["passed_exam"]])
 
 # Get predictions from the linear model
-sample_x = np.linspace(-16.65, 33.35, 300).reshape(-1, 1)
+sample_x = pd.DataFrame({"hours_studied": np.linspace(-16.65, 33.35, 300)})
 predictions = model.predict(sample_x)
 
 # Plot the data
@@ -28,7 +28,7 @@ plt.scatter(
 )
 
 # Plot the line
-plt.plot(sample_x, predictions, color="red", linewidth=3)
+plt.plot(sample_x["hours_studied"], predictions, color="red", linewidth=3)
 
 # Customization for readability
 plt.xticks(fontsize=20)

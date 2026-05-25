@@ -16,13 +16,14 @@ y = df["house_price"]
 line_fitter = LinearRegression()
 line_fitter.fit(X, y)
 
-nox_range = np.linspace(X["nox"].min(), X["nox"].max(), 100).reshape(-1, 1)
-price_predictions = line_fitter.predict(nox_range)
+nox_range = np.linspace(X["nox"].min(), X["nox"].max(), 100)
+nox_range_df = pd.DataFrame({"nox": nox_range})
+price_predictions = line_fitter.predict(nox_range_df)
 
 plt.scatter(X, y, alpha=0.4)
 
 # Plot line here:
-plt.plot(nox_range, price_predictions)
+plt.plot(nox_range_df["nox"], price_predictions)
 
 plt.title("Nitric Oxides Concentration vs. House Price")
 plt.xlabel("Nitric Oxides Concentration")
